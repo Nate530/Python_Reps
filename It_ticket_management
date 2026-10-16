@@ -1,0 +1,73 @@
+"""
+The flow of the programme should be to prompt the user to enter information to answer the following questions
+1st what is the severity of the ticket
+2nd does this ticket require escalation 
+3rd print the ticket summary 
+4th ask if user wishes to enter another ticket
+5th end or repeat the loop."""
+
+enter_ticket = "yes"
+low_severity = 0
+medium_severity = 0
+high_severity = 0
+escalation = ""
+escalation_required = []
+
+while enter_ticket == "yes":
+    print("Enter Ticket Information")
+    employee_name = input("Enter employee name: ")
+    affected_users = int(input("How many users will be affected: "))
+    device_compliance = input("Is the device compliant (yes/no): ").lower()
+    
+    if affected_users < 10 :
+        low_severity = low_severity + 1
+        print(f"Ticket Summary")
+        print(f"{employee_name}")
+        print(f"Affected Users: {affected_users}")
+        print(f"Device Complianct: {device_compliance}")
+        print(f"Severity Rating: Low")
+        print(f"Escalation Required" if device_compliance == "no" else "No Escalation Required")
+
+    elif affected_users < 50 :
+         medium_severity = medium_severity + 1
+         print(f"Ticket Summary")
+         print(f"{employee_name}")
+         print(f"Affected Users: {affected_users}")
+         print(f"Device Complianct: {device_compliance}")
+         print(f"Severity Rating: Medium")
+         print(f"Escalation Required" if device_compliance == "no" else "No Escalation Required")
+
+    elif affected_users > 50:
+        high_severity = high_severity + 1
+        escalation = employee_name
+        escalation_required.append(escalation)
+        print(f"Ticket Summary")
+        print(f"{employee_name}")
+        print(f"Affected Users: {affected_users}")
+        print(f"Device Complianct: {device_compliance}")
+        print(f"Severity Rating: High")
+        print(f"Escalation Required")
+
+    else:
+        print("Invalid number of affected users")
+
+    enter_ticket = input("Enter another ticket: ").lower()
+
+
+tickets_processed = low_severity + medium_severity + high_severity
+high_severity_rate = (high_severity / tickets_processed) * 100
+
+
+print("IT Support Summary")
+print(f"Tickets Processed {tickets_processed}")
+print(f"Low Severity: {low_severity}")
+print(f"Medium Severity: {medium_severity}")
+print(f"High Severity: {high_severity}")
+print(f"High Severity Rate: {high_severity_rate}")
+
+print("Employees Requiring Escalation")
+for _ in escalation_required:
+    print(f"{escalation_required}")
+
+
+

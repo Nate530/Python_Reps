@@ -1,0 +1,64 @@
+"""Your program must:
+1. Check exactly 5 devices.
+2. Ask for each device’s name.
+3. Ask for its Windows version.
+4. Windows 11 → Compliant.
+5. Windows 10 → Non-Compliant.
+6. Print the device name with its result.
+7. Automatically proceed to the next device."""
+"""
+Total devices checked
+Compliant devices
+Non-compliant devices
+Compliance percentage"""
+
+# add the singular of remediation device variable for next time 
+
+compliant_device = 0
+non_compliant_device = 0
+remediation_devices = []
+non_supported_device = 0
+
+for _ in range(5):
+    device_name = input("Input device name: ")
+    device_osversion = int(input("Input OS Version number: "))
+
+    if device_osversion < 10:
+        non_supported_device = non_supported_device + 1
+        remediation_devices.append(device_name)
+        print(f"{device_name} OS version not supported")
+
+    elif device_osversion == 10:
+        non_compliant_device = non_compliant_device + 1
+        remediation_devices.append(device_name)
+        print(f"{device_name} Non-Compliant")
+
+    elif device_osversion == 11:
+        compliant_device = compliant_device + 1
+        print(f"{device_name} Compliant")
+
+    else:
+        non_supported_device = non_supported_device + 1
+        remediation_devices.append(device_name)
+        print(f"{device_name} OS version not supported")
+
+
+
+total_devices = compliant_device + non_compliant_device + non_supported_device
+compliance_rate = (compliant_device / total_devices) * 100 
+non_compliance_rate = (non_compliant_device / total_devices) * 100 
+non_supported_rate = (non_supported_device / total_devices) * 100
+
+print(f"Devices Checked: {total_devices}")
+print(f"Compliant Devices: {compliant_device}")
+print(f"Non-Compliant Devices: {non_compliant_device}")
+print(f"Non-Supported Devices: {non_supported_device}")
+print(f"Compliance Rate: {compliance_rate}")
+print(f"Non-Compliance Rate: {non_compliance_rate}")
+print(f"Non-Supported Rate: {non_supported_rate}")
+
+# print(f"Remediation Device: {remediation_devices}")
+print("Devices Requiring Remediation:")
+#[print(remediation_devices) for remediation_devices in remediation_devices]
+for remediation_devices in remediation_devices:
+    print(f"{remediation_devices}")

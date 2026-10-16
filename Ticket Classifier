@@ -1,0 +1,21 @@
+#Project requirements: 
+"""Your program must:
+1. Ask how many users are affected.
+2. Convert the answer into an integer.
+3. Determine whether the incident is Low, Medium, or High.
+4. Print the severity."""
+
+
+affected_users = int(input("How many users are affected?: "))
+
+if affected_users <= 0:
+    print("No users affected")
+
+elif affected_users <= 10:
+    print("Ticket Severity is Low")
+
+elif affected_users <= 50:
+    print("Ticket Severity is Medium")
+
+else: 
+    print("Ticket Severity is High")
